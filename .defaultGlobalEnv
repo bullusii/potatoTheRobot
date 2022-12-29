@@ -1,0 +1,77 @@
+###### FOR VOICE DB ######
+VOICE_DB_PATH='<YOUR_FULL_VOICE_DB_PATH>'
+VOICE_DB_NAME='voice.db'
+VOICE_DB_TABLE='clips'
+
+###### FOR POTATO BOT #######
+## THERE is a level 2
+debugBot=0
+debugSay=1
+cameraDebug=False
+
+### Motion Detection (Disabled by Default)
+enableMotionDetection=True
+motionSensorPin=32
+pause=True
+
+### Neck
+enableNeck=True
+servoLeftNeckPin=38
+servoRightNeckPin=40
+leftNeckMin=0
+rightNeckMin=40
+
+## FOR PULLING LEFT / RIGHT
+turnLeftLeft=4
+turnLeftRight=15
+turnRightLeft=0.5
+turnRightRight=2
+
+### Mouth
+enableMouth=True
+servoMouthPin=36
+maxJaw = 210
+minJaw = 60
+jawTrigger1 = 145
+jawTrigger2 = 175
+
+### LEDs
+enableLeds=True
+redLedPin=11
+greenLedPin=13
+blueLedPin=15
+
+## Audio
+enableAudio=True
+
+### Camera
+enableCamera=True
+qrMessage=None
+
+### Globals
+scareDelayTime=60 # 15 second delay to restart
+loopDelayTime=0.2
+
+###### FOR POTATO SAY #######
+token='<RESEMBLE_AI_TOKEN'
+project_uuid='<RESEMBLE_PROJECT_ID'
+voice_uuid='<RESEMBLE_VOICE_UUID'
+callback_uri='https://<YOUR_CALLBACK_URL_FOR_RESEMBLE>'
+skelly_api='https://<YOUR_API_ENDPOINT>'
+skelly_api_dev='http://127.0.0.1/skelly'
+get_mode_url='<YOUR_GET_MODE_URL>'
+get_command_url='<YOUR_GET_COMMAND_URL>'
+reset_command_url='https://<YOUR_RESET_ENDPOINT>
+
+## UNUSED BUT TO PROTECT API EVENTUALLY
+SKELLY_API_KEY='<YOUR_API_KEY>'
+
+
+## DEFAULTS FOR RESEMBLE.AI SOUND CREATION #####
+precision='PCM_16'
+sample_rate=22050
+output_format='mp3'
+title=None
+include_timestamps=None
+is_public=None
+is_archived=None

@@ -1,0 +1,24 @@
+### THIS FILE IS JUST FOR REFERENCE
+
+I think I'd like to slow down voice and replace all Katara with Cuh Tara
+
+
+<speak>
+	<voice name="0a947b50" uuid="2011c0a9-da55-4837-9dc0-b5ee36d66386">
+		<resemble:emotion pitch="0.5" intensity="0.5" pace="0.1" fixed="pitch,pace" fixedAngles="35 0 -35 0,35 0 -35 0">
+			Katarah,
+			&#032;I
+			&#032;love&#032;you!
+		</resemble:emotion>
+	</voice>
+</speak>
+
+
+<phoneme ph="kæɾɚɹə" alphabet="ipa">
+    Katara
+</phoneme>
+
+## Cuh Tara
+## PACE .2
+
+can wrap each word in resemble emotion to controll Emphasis

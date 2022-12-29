@@ -1,0 +1,32 @@
+#!/bin/bash
+
+## YOU CAN ALSO PASS -l to login directly
+## IE potatoSync -l
+
+SERVER='raspberrypi.local'
+LOCAL_DIR='/Users/bullusii/work/potatoTheSkeleton'
+REMOTE_DIR='/home/bullusii/work/potatoTheSkeleton'
+
+FILES_TO_SEND=(potatoSay.py potatoBot.py .potatoGlobalEnv)
+DIRECTORIES_TO_SEND=(tests lib) ## lib in future
+EXE_FILE='potatoBot.py'
+
+# LOOPS AND COPIES FILES
+for file in ${FILES_TO_SEND[@]}; do
+  scp $LOCAL_DIR\/$file $SERVER:${REMOTE_DIR}/
+done
+
+## LOOPS AND COPIES DIRS
+for dir in ${DIRECTORIES_TO_SEND[@]};do
+  scp -r $LOCAL_DIR\/${dir}\/ $SERVER:${REMOTE_DIR}/
+done
+
+## EXECUTES FILE
+if [ -n "$1" ]; then
+  if [ "$1" == "-l" ];then
+    echo "Logging in directly after upload..."
+    ssh $SERVER
+  fi
+else
+  ssh -t $SERVER "${REMOTE_DIR}/${EXE_FILE}"
+fi
