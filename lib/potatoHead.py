@@ -13,6 +13,8 @@ class thePotatoHead:
         self.config = config
         if config['enableAudio'] == True:
             pygame.mixer.init()
+            pygame.mixer.music.set_volume(1)
+            pygame.mixer.Channel(0).set_volume(1)
 
 
     ### moving mouth and neck servos together while sound is happening
@@ -46,9 +48,14 @@ class thePotatoHead:
         songFile = os.path.dirname(os.path.realpath(__file__)) + '/../sound/' + songs[0]
         print("playing: " + songFile) if self.debug == 1 else None
 
+        ## Play intro sound and wait 3 seconds
+        if self.config['enableAudio'] == True:
+            introSoundFile = os.path.dirname(os.path.realpath(__file__)) + '/../sound/intros/ominouslaugh.ogg'
+            pygame.mixer.Channel(0).play(pygame.mixer.Sound(introSoundFile))
+            sleep(4)
+
         if self.config['enableAudio'] == True:
             pygame.mixer.music.load(songFile)
-            pygame.mixer.music.set_volume(.6)
             pygame.mixer.music.play()
 
             while pygame.mixer.music.get_busy():

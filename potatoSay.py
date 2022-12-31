@@ -32,7 +32,7 @@ voiceDB = theVoiceDB(config, config['debugSay'])
 
 try:
     ### CHECK IF THE AUDIO FILE EXISTS IN DB BY CHECKING TITLE
-    soundFile = voiceDB.get_local_sound_file(body.lower(), 'title')
+    soundFile = voiceDB.get_voice_data(body.lower(), 'title','local_path')
     if soundFile != None: ##IF EXISTS JUST SEND THE COMMAND
         print("WARNING Saying EXISTS - just sending command")
         helper.setCommand(body.lower())

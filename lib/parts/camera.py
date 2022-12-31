@@ -34,7 +34,7 @@ class theCamera:
                 print(qrMessage) if self.debug == 1 else None
 
                 try:
-                    localSoundPath = self.voiceDB.get_local_sound_file(qrMessage, 'title')
+                    localSoundPath = self.voiceDB.get_voice_data(qrMessage, 'title', 'local_path')
                     print(localSoundPath) if self.debug == 1 else None
 
                     curatedSoundFile = localSoundPath.split("sound/")[1]

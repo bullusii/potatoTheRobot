@@ -35,16 +35,15 @@ class theCommands:
             self.leds.setLed('white')
             soundListTmp = self.processDownload(command)
             self.resetCommand()
-            self.potatoHead.talkSmack(5, soundListTmp)
+            self.potatoHead.talkSmack(5, soundListTmp) if self.debug == 1 else None
         elif "SayThis" in command:
             try:
                 message = command.split("#SayThis#")[1]
-                soundFile = self.voiceDB.get_local_sound_file(message, 'text')
+                soundFile = self.voiceDB.get_voice_data(message, 'text','local_path')
                 curatedSoundFile = soundFile.split("sound/")[1]
                 soundListTmp = [curatedSoundFile]
                 self.leds.setLed('green')
                 self.resetCommand()
-                print("GOT THIS FAR - THINK ITS TALKING SMACK") if self.debug == 1 else None
                 self.potatoHead.talkSmack(5, soundListTmp)
             except:
                 print("ERROR: Say command not in DB: " + command)

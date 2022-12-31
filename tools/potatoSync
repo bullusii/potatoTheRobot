@@ -7,8 +7,8 @@ SERVER='raspberrypi.local'
 LOCAL_DIR='/Users/bullusii/work/potatoTheSkeleton'
 REMOTE_DIR='/home/bullusii/work/potatoTheSkeleton'
 
-FILES_TO_SEND=(potatoSay.py potatoBot.py .potatoGlobalEnv)
-DIRECTORIES_TO_SEND=(tests lib) ## lib in future
+FILES_TO_SEND=(potatoSay.py potatoBot.py scheduleEvent.py .potatoGlobalEnv)
+DIRECTORIES_TO_SEND=(component_tests lib tools) ## lib in future
 EXE_FILE='potatoBot.py'
 
 # LOOPS AND COPIES FILES

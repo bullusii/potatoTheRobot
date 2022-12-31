@@ -1,13 +1,18 @@
+## THERE is a level 2
+debugBot=0
+debugSay=1
+debugScheduledEvent=0
+cameraDebug=False
+
 ###### FOR VOICE DB ######
 VOICE_DB_PATH='<YOUR_FULL_VOICE_DB_PATH>'
 VOICE_DB_NAME='voice.db'
 VOICE_DB_TABLE='clips'
+schedule_db_table='scheduled'
 
 ###### FOR POTATO BOT #######
-## THERE is a level 2
-debugBot=0
-debugSay=1
-cameraDebug=False
+introSound=<yourSoundPath.ogg or .wav>
+introDelay=4
 
 ### Motion Detection (Disabled by Default)
 enableMotionDetection=True

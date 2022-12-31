@@ -21,6 +21,7 @@ from neck import *
 from voiceDB import *
 from potatoHead import *
 from commands import *
+from schedule import *
 
 loader = theLoader(current_directory + '/.potatoGlobalEnv')
 config = loader.getConfig()
@@ -37,6 +38,7 @@ voiceDB = theVoiceDB(config, config['debugBot'])
 motionDetection = theMotionDetection(config, GPIO, config['debugBot']) if config['enableMotionDetection'] else None
 potatoHead = thePotatoHead(config, mouth, neck, leds, config['debugBot'])
 commands = theCommands(config, voiceDB, leds, potatoHead, config['debugBot'])
+schedule = theSchedule(config, voiceDB, potatoHead, config['debugBot'])
 
 camera = theCamera(config, voiceDB, leds, potatoHead, config['debugBot'])
 
@@ -61,6 +63,9 @@ try:
 
         ### Get command every 5 loops
         (limiter, command) = commands.throttle(limiter)
+        
+        ### Check if anything is scheduled
+        schedule.checkSchedule()
 
         ######################## QR CODE STUFF
         if config['enableCamera'] == True:
