@@ -35,9 +35,9 @@ class theVoiceDB:
             print("WARN: Select query returned 0 results") if self.debug == 1 else None
             return returnData
 
-    def insert_sound_file(self,clip_id, body, title):
+    def insert_sound_file(self,clip_id, body, title, playOnDownload):
         try:
-            query = "INSERT INTO " + self.table + " VALUES ('" + clip_id + "','" + body.lower() + "','TBD','TBD','" + title + "')"
+            query = "INSERT INTO " + self.table + " VALUES ('" + clip_id + "','" + body.lower() + "','TBD','TBD','" + title + "'," + str(playOnDownload) + ")"
             self.cur.execute(query)
             self.con.commit()
             print("Audio Content Added to VoiceDB")
@@ -52,6 +52,14 @@ class theVoiceDB:
         except:
             print("ERROR: Audio Content was not UPDATED to DB")
 
+    def get_playOnDownload(self,id):
+        try:
+            query = "SELECT playOnDownload from clips WHERE uuid='" + id + "'"
+            result = self.cur.execute(query)
+            playOnDownload = result.fetchone()[0]
+            return playOnDownload
+        except:
+            return 0
 
     ## Checks if there are dates in the schedule table
     def getScheduledEvent(self):

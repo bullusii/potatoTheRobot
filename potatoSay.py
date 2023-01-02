@@ -27,7 +27,7 @@ helper = potatoSayHelper(config, config['debugSay'])
 
 
 ## SET BODY and TITLE
-(body, title) = helper.validate_inputs(sys.argv)
+(body, title, playOnDownload) = helper.validate_inputs(sys.argv)
 voiceDB = theVoiceDB(config, config['debugSay'])
 
 try:
@@ -68,4 +68,4 @@ except:
     sleep(2)
     clip_id = response_raw['item']['uuid']
     sleep(1)
-    voiceDB.insert_sound_file(clip_id, body.lower(),title)
+    voiceDB.insert_sound_file(clip_id, body.lower(),title,playOnDownload)

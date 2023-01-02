@@ -29,20 +29,32 @@ class potatoSayHelper:
 
     ## CHECKS INPUTS FROM CLI
     def validate_inputs(self, args):
+        ### BODY
         try:
             body = args[1]
         except:
             print("ERROR: no body")
             exit()
 
+        ## PLAY ON DOWNLOAD 1 or 0
         try:
-            title = args[2]
+            if args[2] == 1 or args[2] == 0 or args[2] == None or args[2] == '0' or args[2] == '1':
+                playOnDownload = args[2]
+            else:
+                playOnDownload = 1
+        except:
+            playOnDownload = 1
+
+        ### TITLE
+        try:
+            title = args[3]
         except:
             title = body.lower()
 
         if self.debug == 1:
             print("BODY: " + body)
+            print("playOnDownload: "  + str(playOnDownload))
             print("TITLE: " + title)
 
         validated_body = self.refine_text(body)
-        return (validated_body, title)
+        return (validated_body, title, playOnDownload)

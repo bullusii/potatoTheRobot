@@ -33,9 +33,11 @@ class theCommands:
             self.potatoHead.talkSmack(5, soundListTmp)
         elif "downloadClip" in command:
             self.leds.setLed('white')
-            soundListTmp = self.processDownload(command)
+            (soundListTmp, playOnDownload) = self.processDownload(command)
             self.resetCommand()
-            self.potatoHead.talkSmack(5, soundListTmp) if self.debug == 1 else None
+            print("PlayOnDownload: " + str(playOnDownload)) if self.debug == 1 else None
+            if playOnDownload == 1 or playOnDownload == '1':
+                self.potatoHead.talkSmack(.5, soundListTmp)
         elif "SayThis" in command:
             try:
                 message = command.split("#SayThis#")[1]
@@ -65,11 +67,12 @@ class theCommands:
 
         ## UPDATE DATABASE with paths for caching
         s3_path = 's3://skelly-api/clips/' + clip_name
-        self.voiceDB.update_sound(s3_path, clip_local_path, clip_id)
+        playOnDownload = self.voiceDB.update_sound(s3_path, clip_local_path, clip_id)
         soundListTmp = ['clips/' + clip_name]
+        playOnDownload = self.voiceDB.get_playOnDownload(clip_id)
         ### Delay to allow file placement
         sleep(5)
-        return soundListTmp
+        return soundListTmp, playOnDownload
 
     def getMode(self):
         command = "curl -s " + self.config['get_mode_url'] + " | awk -F '\"' '{ print $4 }'"
